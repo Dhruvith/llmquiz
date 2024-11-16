@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: llm-quiz-generation
+    env: node
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        value: file:./prod.db
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
